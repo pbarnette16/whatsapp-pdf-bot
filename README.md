@@ -22,12 +22,18 @@ The bot:
 ### Architecture Diagram (Mermaid)
 ```mermaid
 graph TD
-    A[WhatsApp Webhook] -->|Incoming Messages| B[Router]
-    B -->|PDF Message| C[PDF Processing Service]
-    B -->|Text Message| D[OpenAI Handler]
-    C --> E[Calendar Service]
-    D --> E
-    E -->|Event Added| F[Google Calendar]
+    User -->|Sends PDF/Text| WhatsAppBot
+    WhatsAppBot -->|Forwards PDF/Text| AuthenticationService
+    AuthenticationService -->|Validates User| WhatsAppBot
+    WhatsAppBot -->|Validated Request| ProcessingService
+    ProcessingService -->|Extract Event Details| ChatGPT
+    ChatGPT -->|Sends Parsed Info| ProcessingService
+    ProcessingService -->|Creates/Updates Events| GoogleCalendar
+    ProcessingService -->|Logs Activity| LoggingService
+    GoogleCalendar -->|Sends Updates| WhatsAppBot
+    WhatsAppBot -->|Notifies User| User
+    WhatsAppBot -->|Sends Broadcast Messages| User
+    LoggingService -->|Stores Logs| LogStorage
 ```
 
 ## Project Structure
