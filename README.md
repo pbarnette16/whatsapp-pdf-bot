@@ -11,7 +11,7 @@ The bot was designed to solve the common problem of consolidating event details 
 - Professionals managing team schedules.
 - Individuals handling multiple events across different groups.
 
-By automating this process, the bot saves time, minimises errors, and enhances productivity.
+By automating this process, the bot saves time, minimises errors, and enhances productivity. And helps to relieve the stress of overworked parents. 
 
 ## System Overview
 The bot:
@@ -98,7 +98,7 @@ REMINDER_OFFSET_DAYS=1
 
 ### Run Locally
 ```bash
-npm start
+npm run start
 ```
 
 ### Deployment
@@ -117,5 +117,5 @@ npm run build
 - Add support for additional message types.
 - Implement analytics for processed messages and calendar events.
 - Enhance PDF parsing with AI-based extraction for complex documents.
-- Able to talk to the bot to retrieve details from the calendar. 
+- Able to talk to the bot to retrieve details from the calendar. ie. What is a week at a glance look like, or month at a glance.  Perhaps additional detail if the events cost money or require parents permissions. 
 
