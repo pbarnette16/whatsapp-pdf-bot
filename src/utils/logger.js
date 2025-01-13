@@ -1,3 +1,4 @@
+// Provides logging utilities
 const fs = require("fs");
 
 function logInfo(message, data) {
