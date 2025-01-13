@@ -48,6 +48,7 @@ whatsapp-pdf-calendar-bot/
         |-- whatsappHandler.js      # WhatsApp message processing
         |-- pdfProcessingService.js # PDF processing
         |-- calendarService.js      # Google Calendar interactions
+        |-- openaiHandler.js      # Extract event details from the pdf using ChatGPT
     |-- utils/
         |-- logger.js       # Logging utilities
 ```
@@ -110,10 +111,11 @@ npm run build
 - **PDF Parsing**: Extracts event details, including class names, descriptions, and dates.
 - **Google Calendar Sync**: Adds events with reminders and metadata.
 - **Error Handling**: Logs errors and handles unsupported message types gracefully.
+- **AI parsing**: Extraction of event details from a pdf
 
 ## Future Enhancements
 - Add support for additional message types.
 - Implement analytics for processed messages and calendar events.
 - Enhance PDF parsing with AI-based extraction for complex documents.
-
+- Able to talk to the bot to retrieve details from the calendar. 
 
