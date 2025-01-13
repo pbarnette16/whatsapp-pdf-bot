@@ -22,17 +22,17 @@ The bot:
 ### Architecture Diagram (Mermaid)
 ```mermaid
 graph TD
-    User -->|Sends PDF/Text| WhatsAppBot
-    WhatsAppBot -->|Forwards PDF/Text| AuthenticationService
-    AuthenticationService -->|Validates User| WhatsAppBot
-    WhatsAppBot -->|Validated Request| ProcessingService
-    ProcessingService -->|Extract Event Details| ChatGPT
-    ChatGPT -->|Sends Parsed Info| ProcessingService
-    ProcessingService -->|Creates/Updates Events| GoogleCalendar
-    ProcessingService -->|Logs Activity| LoggingService
-    GoogleCalendar -->|Sends Updates| WhatsAppBot
-    WhatsAppBot -->|Notifies User| User
-    WhatsAppBot -->|Sends Broadcast Messages| User
+    User -->|Sends Message/PDF| WhatsApp
+    WhatsApp -->|Forwards to| CloudflareWorkers
+    CloudflareWorkers -->|Authenticates| AuthService
+    AuthService -->|Validates User| CloudflareWorkers
+    CloudflareWorkers -->|Processes Request| OpenAI(ChatGPT)
+    OpenAI -->|Returns Parsed Event| CloudflareWorkers
+    CloudflareWorkers -->|Updates Calendar| GoogleCalendar
+    GoogleCalendar -->|Sends Event Updates| CloudflareWorkers
+    CloudflareWorkers -->|Notifies| WhatsApp
+    WhatsApp -->|Delivers Notifications| User
+    CloudflareWorkers -->|Logs Actions| LoggingService
     LoggingService -->|Stores Logs| LogStorage
 ```
 
