@@ -1,0 +1,28 @@
+{
+    "name": "whatsapp-pdf-calendar-bot",
+    "version": "1.0.0",
+    "description": "A WhatsApp bot that processes PDFs or text for event details and syncs them with Google Calendar.",
+    "main": "src/index.js",
+    "scripts": {
+      "start": "wrangler dev",
+      "build": "wrangler publish",
+      "test": "jest"
+    },
+    "dependencies": {
+      "dotenv": "^16.0.0",
+      "express": "^4.18.2",
+      "axios": "^1.4.0",
+      "form-data": "^4.0.0",
+      "@googleapis/calendar": "^0.3.0",
+      "openai": "^3.2.1",
+      "pdf-parse": "^1.1.1"
+    },
+    "devDependencies": {
+      "wrangler": "^3.0.0",
+      "jest": "^29.0.0"
+    },
+    "engines": {
+      "node": ">=18"
+    },
+    "author": "Paul Barnette"
+  }
