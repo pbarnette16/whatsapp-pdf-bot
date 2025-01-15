@@ -1,5 +1,4 @@
 // Handles routing of WhatsApp messages and bot actions
-const express = require("express");
 const { handleMessage } = require("./services/whatsappHandler");
 const { logInfo } = require("./utils/logger");
 

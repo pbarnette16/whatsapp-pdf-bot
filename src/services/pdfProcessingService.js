@@ -1,5 +1,6 @@
 // Extracts event details from PDFs
-const pdf = require("pdf-parse");
+// const pdf = require("pdf-parse");
+const {extractEventDetails} = require("./openaiHandler");
 const { logInfo, logError } = require("../utils/logger");
 
 async function processPDF(file) {
@@ -11,6 +12,8 @@ async function processPDF(file) {
     temporaryStorage[file.name] = file;
 
     const pdfText = await extractText(file); // Parse the PDF content
+    // Example: "Class: 1/2c, Event: School Play, Date: 2025-01-20"
+    // { date: "2025-01-20", time: "10:00", class: "1/2c", description: "School Play", term: "Term 4" };
     const events = await extractEventDetails(pdfText);
 
     // Clean up the temporary storage
@@ -24,9 +27,7 @@ async function processPDF(file) {
   }
 }
 
-function extractEventDetails(text) {
-  // Example: "Class: 1/2c, Event: School Play, Date: 2025-01-20"
-  return { date: "2025-01-20", time: "10:00", class: "1/2c", description: "School Play" };
-}
+
+
 
 module.exports = { processPDF };
